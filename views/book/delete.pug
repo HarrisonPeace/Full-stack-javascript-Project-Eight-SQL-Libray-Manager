@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+    h2= title
+    p Are you sure you want to delete 
+      strong= `${book.title}?`
+    form(action=`/book/${book.id}/delete`, method="post")
+      input#delete(type="submit", value = "Yes, I'm sure")
+      a.button#no(href=`/book/${book.id}`) No! Take me back! 

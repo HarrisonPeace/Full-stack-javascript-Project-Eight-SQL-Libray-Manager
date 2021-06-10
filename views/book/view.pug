@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+  h2= book.title
+  h3= book.author
+  h4= book.genre
+  h4= book.year
+  a.button(href="/") &larr; Back
+  a.button(href=`/book/${book.id}/edit`) Edit Book
+  a.button(href=`/book/${book.id}/delete`) Delete Book

@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  div.home-header
+    a.button(href='/book/new') Create New Book
+    form
+      input#search(type='search' name='search' placeholder='Search' onkeyup='searchFunction()' title='Search' onsearch='searchFunction()')
+
+  if(deletedBook)
+    p.red= `${deletedBook} was deleted`
+
+  table
+    thead
+      tr
+        th Title
+        th Author
+        th Genre
+        th Year
+    tbody
+      each book in books
+        tr
+          td
+            a(href=`/book/${book.id}`)= book.title
+          td.author= book.author
+          td.genre= book.genre
+          td.year= book.year
+
+  if(noBooks) 
+    p Sorry you have no books stored in the data base.
+
+  script(type='text/javascript' src="/javascript/app.js")
