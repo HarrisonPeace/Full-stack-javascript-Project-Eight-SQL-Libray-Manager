@@ -140,3 +140,12 @@ table {
   display: flex;
   justify-content: space-between;
 }
+
+a.disabled {
+  pointer-events: none;
+  background-color: #01b189;
+}
+
+.page-container {
+  margin-top: 10px;
+}

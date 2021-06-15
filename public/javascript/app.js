@@ -1,3 +1,6 @@
+const Book = require('../models').Book;
+console.log(Book);
+
 function searchFunction() {
   // Declare variables
   let input, filter, table, tableRow, dataCaption;

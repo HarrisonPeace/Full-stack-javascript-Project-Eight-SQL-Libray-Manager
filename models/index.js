@@ -31,9 +31,6 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-sequelize.logging = false;
-Sequelize.logging = false;
-
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

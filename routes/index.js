@@ -14,12 +14,30 @@ function asyncHandler(cb){
   }
 }
 
+/* Redirect to page 1 */
+router.get('/', function(req, res, next) {
+  res.redirect('/1');
+});
+
 /* GET home page. */
-router.get('/', asyncHandler(async (req, res, next) => {
+router.get('/:page', asyncHandler(async (req, res, next) => {
+  const page = req.params.page;
+  const itemsPerPage = 10;
   const books = await Book.findAll({ order: [[ "year", "DESC" ]] })
-  books.length >= 1
-  ? res.render('index', { books, title: 'SQL Library Manager' })
-  : res.render('index', { books: {}, title: 'SQL Library Manager',  noBooks: true })
+  if (books.length >= 1) {
+    if (books.length <= 10) {
+    res.render('index', { books, title: 'SQL Library Manager' })
+    } else {
+      let totalPages = Math.ceil(books.length / itemsPerPage);
+      console.log(totalPages);
+      let startIndex = (page * itemsPerPage) - itemsPerPage; //first list item to be shown on page
+      let endIndex = (page * itemsPerPage - 1); //last list item to be shown on page
+      const filteredBooks = books.filter((book, index) => index >= startIndex && index <= endIndex);
+      res.render('index', { books: filteredBooks, title: 'SQL Library Manager', pages: totalPages, page })
+    }
+  } else {
+    res.render('index', { books: {}, title: 'SQL Library Manager',  noBooks: true })
+  }
 }));
 
 router.get('/deleted/:book', asyncHandler(async (req, res, next) => {

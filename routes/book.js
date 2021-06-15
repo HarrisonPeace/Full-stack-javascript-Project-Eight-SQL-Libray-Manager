@@ -22,7 +22,7 @@ function noBook(req, res, next) {
 
 /* Redirect to home */
 router.get('/', function(req, res, next) {
-  res.redirect('/');
+  res.redirect('/1');
 });
 
 /* Create new book form. */

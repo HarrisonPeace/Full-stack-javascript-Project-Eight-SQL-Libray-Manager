@@ -25,9 +25,10 @@ module.exports = (sequelize) => {
     genre: Sequelize.STRING,
     year: {
       type: Sequelize.INTEGER,
+      allowNull: true,
       validate: {
         is: {
-          args: /^\d{4}$/i,
+          args: /^\d{4}$|^(?![\s\S])/i,
           msg: 'Year is required in YYYY format'
         }
       },

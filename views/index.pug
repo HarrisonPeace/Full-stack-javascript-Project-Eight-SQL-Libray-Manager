@@ -28,4 +28,12 @@ block content
   if(noBooks) 
     p Sorry you have no books stored in the data base.
 
+  div.page-container
+    - var n = 1;
+    while n <= pages
+      if(n == page)
+        a.button.disabled(href=`/${n}`)= `Page ${n++}`
+      else
+        a.button(href=`/${n}`)= `Page ${n++}`
+
   script(type='text/javascript' src="/javascript/app.js")
