@@ -17,6 +17,10 @@ CSS/HTML
 ## Features
 A database web application for storing, editing and deleting a list of library books.
 
+Pagination has been added but has some UX design flaws, mainly being that the search function now only searches through the current page. 
+Its fine for this demonstration but would make finding a particular book in a large database excruciating.
+I believe creating a Rest API would be the best way to fix this (so that the search function can sort through all data) but I am yet to learn this so will continue with the course and come back to this issue.
+
 ## Installation
 
 Download product files and unzip.
